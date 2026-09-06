@@ -12,7 +12,7 @@ function StackDiagram() {
   const layer = (cy: number) =>
     `720,${cy - 34} 852,${cy} 720,${cy + 34} 588,${cy}`
   return (
-    <svg className="stack" viewBox="300 30 860 340" role="img" aria-label="Schemas flow into the ata engine and run everywhere">
+    <svg className="stack" viewBox="280 30 940 340" role="img" aria-label="Schemas flow into the ata engine and run everywhere">
       {/* leader lines + labels, left */}
       <g className="d-label" textAnchor="end">
         <line x1="470" y1="96" x2="588" y2="96" />
