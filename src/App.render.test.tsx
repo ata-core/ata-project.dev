@@ -7,7 +7,7 @@ describe('landing page', () => {
 
   test('renders the thesis and every product card', () => {
     for (const text of [
-      'The Validation<br/><em>Layer</em> for',
+      '>ata</h1>',
       'ata-validator',
       '@ata-project/zod',
       'ata build',
