@@ -158,7 +158,7 @@ export default function App() {
     <>
       <nav>
         <div className="wrap nav-in">
-          <a className="mark" href="/">ata<span>_</span>project</a>
+          <a className="mark" href="/">ata<span>-</span>project</a>
           <div className="nav-links">
             <a href="#open-source">Open source</a>
             <a href="#numbers">Numbers</a>
@@ -237,7 +237,7 @@ export default function App() {
             <div><div className="n">3,359<span>/3,359</span></div><p>official suite cases passing, three dialects</p></div>
             <div><div className="n">12</div><p>packages on npm, one engine underneath</p></div>
           </div>
-          <p className="num-note">as of 2026-09-06 &middot; every figure re-runs in CI on each change, with code generation enabled and blocked</p>
+          <p className="num-note">as of 2026-09-06, on Node 25, Apple silicon, zod 4.5.4, ata-validator 1.13.1 &middot; every figure re-runs in CI on each change, with code generation enabled and blocked</p>
         </div>
       </section>
 
@@ -275,7 +275,7 @@ export default function App() {
       </section>
 
       <div className="banner">
-        <span className="banner-mark">a<span>_</span></span>
+        <span className="banner-mark">ata<span>-</span>project</span>
       </div>
 
       <footer>
@@ -300,10 +300,6 @@ export default function App() {
             <a href="https://github.com/ata-core">GitHub</a>
             <a href="https://www.npmjs.com/package/ata-validator">npm</a>
             <a href="https://ata-validator.com/playground">Playground</a>
-          </div>
-          <div className="foot-note">
-            <p className="foot-h">MEASURED ON</p>
-            <p>Node 25, Apple silicon<br />zod 4.5.4 &middot; ata-validator 1.13.1</p>
           </div>
         </div>
       </footer>

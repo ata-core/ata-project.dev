@@ -185,16 +185,15 @@ h1 em, h2 em, .mission em {
     #17163a;
 }
 .banner-mark {
-  font: 700 64px/1 var(--mono); color: #ffffff; letter-spacing: -0.04em;
+  font-size: 52px; font-weight: 700; color: #ffffff; letter-spacing: -0.03em;
   text-shadow: 0 2px 30px rgba(12, 10, 60, 0.55);
 }
 .banner-mark span { color: #9fd6ff; }
 footer { background: var(--dark); color: var(--dark-ink-2); padding: 52px 0 60px; }
-.foot-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 32px; }
+.foot-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 32px; }
 .foot-h { font: 600 11px/1 var(--mono); letter-spacing: 0.12em; color: #6f6f68; margin-bottom: 14px; }
 .foot-grid a { display: block; font-size: 13.5px; padding: 4px 0; }
 .foot-grid a:hover { color: var(--dark-ink); }
-.foot-note p:last-child { font: 500 12px/1.7 var(--mono); }
 
 @media (max-width: 900px) {
   .os-row { grid-template-columns: 1fr; gap: 24px; }
