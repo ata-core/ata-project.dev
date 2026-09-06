@@ -274,10 +274,6 @@ export default function App() {
         </div>
       </section>
 
-      <div className="banner">
-        <span className="banner-mark">ata project</span>
-      </div>
-
       <footer>
         <div className="wrap foot-grid">
           <div>
@@ -302,6 +298,7 @@ export default function App() {
             <a href="https://ata-validator.com/playground">Playground</a>
           </div>
         </div>
+        <div className="foot-word" aria-hidden="true">ata</div>
       </footer>
     </>
   )

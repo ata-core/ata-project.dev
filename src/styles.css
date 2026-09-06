@@ -174,25 +174,25 @@ h1 em, h2 em, .mission em {
 .res-grid h3 { margin-top: 12px; font-size: 17px; font-weight: 620; color: var(--ink); }
 .res-grid p:last-child { margin-top: 8px; font-size: 13.5px; color: var(--ink-3); }
 
-/* banner + footer */
-.banner {
-  height: 190px; display: flex; align-items: center; justify-content: center;
-  background:
-    radial-gradient(120% 180% at 18% 0%, rgba(47, 183, 232, 0.55), transparent 52%),
-    radial-gradient(120% 200% at 82% 10%, rgba(176, 76, 232, 0.6), transparent 55%),
-    radial-gradient(140% 240% at 50% 120%, rgba(61, 59, 212, 0.9), transparent 70%),
-    #17163a;
-}
-.banner-mark {
-  font-family: var(--mono);
-  font-size: 46px; font-weight: 600; color: #ffffff; letter-spacing: -0.04em;
-  text-shadow: 0 2px 30px rgba(12, 10, 60, 0.55);
-}
-footer { background: var(--dark); color: var(--dark-ink-2); padding: 52px 0 60px; }
+/* footer */
+footer { background: var(--dark); color: var(--dark-ink-2); padding: 64px 0 0; overflow: hidden; }
 .foot-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 32px; }
 .foot-h { font: 600 11px/1 var(--mono); letter-spacing: 0.12em; color: #6f6f68; margin-bottom: 14px; }
 .foot-grid a { display: block; font-size: 13.5px; padding: 4px 0; }
 .foot-grid a:hover { color: var(--dark-ink); }
+
+.foot-word {
+  margin: 72px auto -70px;
+  text-align: center;
+  font-family: var(--mono);
+  font-size: clamp(180px, 26vw, 340px);
+  font-weight: 600;
+  letter-spacing: -0.06em;
+  line-height: 0.86;
+  background: linear-gradient(180deg, #3c3c3c, #121212 85%);
+  -webkit-background-clip: text; background-clip: text; color: transparent;
+  user-select: none;
+}
 
 @media (max-width: 900px) {
   .os-row { grid-template-columns: 1fr; gap: 24px; }
