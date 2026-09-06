@@ -1,3 +1,82 @@
+import { useEffect, useRef, useState } from 'react'
+
+const TACH_MAX = 220
+const TACH_VALUE = 200
+const ang = (v: number) => v - 110
+const pt = (deg: number, r: number) => {
+  const a = (deg * Math.PI) / 180
+  return [280 + r * Math.sin(a), 280 - r * Math.cos(a)] as const
+}
+const arc = (from: number, to: number, r: number) => {
+  const [x1, y1] = pt(from, r)
+  const [x2, y2] = pt(to, r)
+  return `M ${x1.toFixed(1)} ${y1.toFixed(1)} A ${r} ${r} 0 ${to - from > 180 ? 1 : 0} 1 ${x2.toFixed(1)} ${y2.toFixed(1)}`
+}
+
+function Tach() {
+  const ref = useRef<SVGSVGElement | null>(null)
+  const [on, setOn] = useState(false)
+  const [read, setRead] = useState(0)
+
+  useEffect(() => {
+    const el = ref.current
+    if (!el) return
+    const still = window.matchMedia('(prefers-reduced-motion: reduce)').matches
+    const io = new IntersectionObserver(
+      entries => {
+        if (!entries.some(e => e.isIntersecting)) return
+        io.disconnect()
+        setOn(true)
+        if (still) { setRead(TACH_VALUE); return }
+        const t0 = performance.now()
+        const dur = 1900
+        const tick = (t: number) => {
+          const p = Math.min(1, (t - t0) / dur)
+          setRead(Math.round(TACH_VALUE * (1 - Math.pow(1 - p, 3))))
+          if (p < 1) requestAnimationFrame(tick)
+        }
+        requestAnimationFrame(tick)
+      },
+      { threshold: 0.5 },
+    )
+    io.observe(el)
+    return () => io.disconnect()
+  }, [])
+
+  const minors = []
+  for (let v = 0; v <= TACH_MAX; v += 10) {
+    const major = v % 20 === 0
+    const red = v >= TACH_VALUE
+    const [x1, y1] = pt(ang(v), major ? 214 : 222)
+    const [x2, y2] = pt(ang(v), 232)
+    minors.push(
+      <line key={v} x1={x1} y1={y1} x2={x2} y2={y2}
+        className={red ? 't-tick t-red' : major ? 't-tick t-major' : 't-tick'} />,
+    )
+  }
+  const labels = []
+  for (let v = 0; v <= TACH_VALUE; v += 40) {
+    const [x, y] = pt(ang(v), 190)
+    labels.push(<text key={v} x={x} y={y + 5} className="t-num">{v}</text>)
+  }
+
+  return (
+    <svg ref={ref} className={on ? 'tach on' : 'tach'} viewBox="0 0 560 400" role="img"
+      aria-label="Rejections per second through a zod schema: 200 million on one core">
+      <path d={arc(ang(0), ang(TACH_MAX), 236)} className="t-track" />
+      <path d={arc(ang(TACH_VALUE), ang(TACH_MAX), 236)} className="t-zone" />
+      {minors}
+      {labels}
+      <g className="t-needle">
+        <line x1="280" y1="304" x2="280" y2="106" />
+      </g>
+      <circle cx="280" cy="280" r="11" className="t-hub" />
+      <text x="280" y="352" className="t-read">{read}<tspan className="t-unit"> M/s</tspan></text>
+      <text x="280" y="382" className="t-cap">REJECTIONS PER SECOND, ONE CORE</text>
+    </svg>
+  )
+}
+
 function StackDiagram() {
   const slab = (cy: number, cls: string) => (
     <g className={cls} transform={`translate(340,${cy}) scale(1,0.5) rotate(45)`}>
@@ -40,6 +119,7 @@ type Product = {
   href: string
   panel: { title: string; lines: Array<{ t: string; c?: string }> }
   holo?: boolean
+  dial?: boolean
 }
 
 const PRODUCTS: Product[] = [
@@ -73,6 +153,7 @@ const PRODUCTS: Product[] = [
       'Same answers as zod, differential-tested on 13,030 values. Verdicts in 21 ns, rejections in 5, and the speed survives a strict CSP where compiled zod loses its advantage.',
     meta: 'v0.1.0 · 13,030-value differential suite',
     href: 'https://github.com/ata-core/ata-zod',
+    dial: true,
     panel: {
       title: 'bridge.ts',
       lines: [
@@ -257,14 +338,18 @@ export default function App() {
                   <a className="os-btn" href={p.href}>Explore {p.name}</a>
                   <p className="os-meta">{p.meta}</p>
                 </div>
-                <div className={p.holo ? 'panel holo' : 'panel'}>
-                  <div className="panel-bar">{p.panel.title}</div>
-                  <pre>
-                    {p.panel.lines.map((l, i) => (
-                      <span key={i} className={l.c}>{l.t}{'\n'}</span>
-                    ))}
-                  </pre>
-                </div>
+                {p.dial ? (
+                  <Tach />
+                ) : (
+                  <div className={p.holo ? 'panel holo' : 'panel'}>
+                    <div className="panel-bar">{p.panel.title}</div>
+                    <pre>
+                      {p.panel.lines.map((l, i) => (
+                        <span key={i} className={l.c}>{l.t}{'\n'}</span>
+                      ))}
+                    </pre>
+                  </div>
+                )}
               </article>
             ))}
           </div>
