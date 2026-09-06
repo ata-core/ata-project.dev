@@ -1,159 +1,342 @@
+const TICKER = [
+  'ata-validator 1.13.1',
+  '@ata-project/zod 0.1.0',
+  '@ata-project/keywords 0.2.0',
+  'ata-vite 0.4.x',
+  'fastify-ata 0.9.x',
+  '7 native builds',
+  'suite 3,359 / 3,359',
+]
+
+function StackDiagram() {
+  const layer = (cy: number) =>
+    `720,${cy - 34} 852,${cy} 720,${cy + 34} 588,${cy}`
+  return (
+    <svg className="stack" viewBox="300 30 860 340" role="img" aria-label="Schemas flow into the ata engine and run everywhere">
+      {/* leader lines + labels, left */}
+      <g className="d-label" textAnchor="end">
+        <line x1="470" y1="96" x2="588" y2="96" />
+        <text x="462" y="100">your schemas</text>
+        <line x1="470" y1="200" x2="588" y2="200" />
+        <text x="462" y="204">the ata engine</text>
+        <line x1="470" y1="304" x2="588" y2="304" />
+        <text x="462" y="308">everywhere</text>
+      </g>
+      {/* leader lines + labels, right */}
+      <g className="d-label" textAnchor="start">
+        <line x1="852" y1="96" x2="970" y2="96" />
+        <text x="978" y="100">zod &middot; OpenAPI &middot; JSON Schema</text>
+        <line x1="852" y1="200" x2="970" y2="200" />
+        <text x="978" y="204">compiled &middot; interpreted &middot; native</text>
+        <line x1="852" y1="304" x2="970" y2="304" />
+        <text x="978" y="308">node &middot; edge &middot; browser &middot; build</text>
+      </g>
+      {/* the stack */}
+      <g className="d-layer">
+        <polygon points={layer(96)} />
+        <polygon points={layer(200)} className="d-mid" />
+        <polygon points={layer(304)} />
+      </g>
+      <g className="d-drop">
+        <line x1="720" y1="130" x2="720" y2="166" />
+        <line x1="720" y1="234" x2="720" y2="270" />
+      </g>
+    </svg>
+  )
+}
+
+type Product = {
+  idx: string
+  tag: string
+  name: string
+  headline: string
+  body: string
+  meta: string
+  href: string
+  panel: { title: string; lines: Array<{ t: string; c?: string }> }
+  holo?: boolean
+}
+
+const PRODUCTS: Product[] = [
+  {
+    idx: '01',
+    tag: 'ATA-VALIDATOR',
+    name: 'ata-validator',
+    headline: 'The JSON Schema engine',
+    body:
+      'Draft 2020-12, draft 7 and the v1 dialect at 100% of the official suite, compiled and interpreted alike, with compiler-grade error reports and an optional native accelerator.',
+    meta: '★ 359 · 7 native builds · 0 required deps',
+    href: 'https://github.com/ata-core/ata-validator',
+    holo: true,
+    panel: {
+      title: 'npm test',
+      lines: [
+        { t: '$ npm run test:suite', c: 'dim' },
+        { t: 'PASS  draft2020-12  1299/1299', c: 'ok' },
+        { t: 'PASS  draft7          927/927', c: 'ok' },
+        { t: 'PASS  v1            1133/1133', c: 'ok' },
+        { t: '0 known failures, 0 regressions', c: 'dim' },
+      ],
+    },
+  },
+  {
+    idx: '02',
+    tag: 'ZOD BRIDGE',
+    name: '@ata-project/zod',
+    headline: 'zod schemas on the engine',
+    body:
+      'Same answers as zod, differential-tested on 13,030 values. Verdicts in 21 ns, rejections in 5, and the speed survives a strict CSP where compiled zod loses its advantage.',
+    meta: 'v0.1.0 · 13,030-value differential suite',
+    href: 'https://github.com/ata-core/ata-zod',
+    panel: {
+      title: 'bridge.ts',
+      lines: [
+        { t: "import { compile } from '@ata-project/zod'", c: 'dim' },
+        { t: 'const check = compile(userSchema)' },
+        { t: 'check.isValid(data)   // 21 ns' },
+        { t: 'check.safeParse(bad)  // 6.7 ns, lazy ZodError' },
+      ],
+    },
+  },
+  {
+    idx: '03',
+    tag: 'AHEAD OF TIME',
+    name: 'ata build',
+    headline: 'Validation that compiles away',
+    body:
+      'Schemas become standalone modules that import nothing, so the validator disappears into your bundle and the size argument ends.',
+    meta: '~1 KB gzipped per schema · 0 runtime deps',
+    href: 'https://github.com/ata-core/ata-validator#ahead-of-time-compilation',
+    panel: {
+      title: 'shell',
+      lines: [
+        { t: '$ npx ata compile schema.json', c: 'dim' },
+        { t: 'validate.js  2.3 KB · 775 B gzip · 0 deps', c: 'ok' },
+      ],
+    },
+  },
+  {
+    idx: '04',
+    tag: 'BUNDLER',
+    name: 'ata-vite',
+    headline: 'The same output, at build time',
+    body:
+      'Import a schema, get a compiled validator, ship no compiler to the browser. JavaScript and TypeScript sources, path aliases respected.',
+    meta: 'vite plugin · js + ts',
+    href: 'https://github.com/ata-core/ata-vite',
+    panel: {
+      title: 'vite.config.js',
+      lines: [
+        { t: "import ata from 'ata-vite'", c: 'dim' },
+        { t: 'export default { plugins: [ata()] }' },
+      ],
+    },
+  },
+  {
+    idx: '05',
+    tag: 'SERVER',
+    name: 'fastify-ata',
+    headline: 'Fastify wiring, defaults applied',
+    body:
+      "ata is listed in Fastify's documentation as an alternative validator; the plugin matches the framework's built-in behavior with nothing to tune.",
+    meta: "listed in Fastify's docs",
+    href: 'https://github.com/ata-core/fastify-ata',
+    panel: {
+      title: 'server.js',
+      lines: [
+        { t: "import ata from 'fastify-ata'", c: 'dim' },
+        { t: 'app.register(ata)' },
+      ],
+    },
+  },
+  {
+    idx: '06',
+    tag: 'EXTEND',
+    name: '@ata-project/keywords',
+    headline: 'Checks JSON Schema cannot say',
+    body:
+      'instanceof and typeof, compiled into the hot path instead of bolted on around it, so custom keywords keep rejections at nanoseconds.',
+    meta: 'v0.2.0 · compiled keyword checks',
+    href: 'https://github.com/ata-core/ata-keywords',
+    panel: {
+      title: 'keywords.js',
+      lines: [
+        { t: "{ createdAt: { instanceof: 'Date' } }", c: 'dim' },
+        { t: 'withKeywords(new Validator(schema))' },
+      ],
+    },
+  },
+]
+
 export default function App() {
   return (
     <>
-      
+      <div className="ticker">
+        <div className="wrap ticker-in">
+          {TICKER.map((t) => (
+            <span key={t}>{t}</span>
+          ))}
+        </div>
+      </div>
+
       <nav>
         <div className="wrap nav-in">
           <a className="mark" href="/">ata<span>_</span>project</a>
           <div className="nav-links">
-            <a href="#products">Products</a>
-            <a href="#vision">Vision</a>
+            <a href="#open-source">Open source</a>
+            <a href="#numbers">Numbers</a>
             <a href="https://ata-validator.com">Docs</a>
             <a href="https://github.com/ata-core">GitHub</a>
           </div>
         </div>
       </nav>
-      
+
       <header className="hero">
         <div className="wrap">
-          <p className="eyebrow">ata project</p>
-          <h1>The <em>validation layer</em><br />for JavaScript</h1>
+          <p className="status"><i /> every figure on this page / measured</p>
+          <h1>
+            The Validation <em>Layer</em>
+            <br />
+            for JavaScript
+          </h1>
           <p className="lede">
             JSON Schema is the intermediate representation of validation: OpenAPI speaks it,
-            LLMs emit it, and schema libraries compile to it. ata executes it, everywhere,
-            and stays fast where nothing else does.
+            LLMs emit it, schema libraries compile to it. ata executes it, everywhere.
           </p>
           <div className="cta">
             <a className="btn btn-primary" href="https://ata-validator.com/docs/quick-start">Get started</a>
             <a className="btn btn-ghost" href="https://www.npmjs.com/package/ata-validator">$ npm i ata-validator</a>
           </div>
+          <StackDiagram />
         </div>
       </header>
-      
-      <div className="proof">
-        <div className="wrap proof-in">
-          <div><div className="p-num">100<small>%</small></div><div className="p-cap">official test suite, three dialects,<br />compiled and interpreted alike</div></div>
-          <div><div className="p-num">21<small>ns</small></div><div className="p-cap">to accept a document<br />through a zod schema</div></div>
-          <div><div className="p-num">5<small>ns</small></div><div className="p-cap">to reject one, the path<br />attackers actually exercise</div></div>
-          <div><div className="p-num">~1<small>KB</small></div><div className="p-cap">a schema compiled ahead of time,<br />gzipped, importing nothing</div></div>
+
+      <div className="trust">
+        <div className="wrap">
+          <p>Verified and shipped in public</p>
+          <div className="trust-row">
+            <span>FASTIFY DOCS</span>
+            <span>REACT-JSONSCHEMA-FORM</span>
+            <span>BOWTIE HARNESS</span>
+            <span>STANDARD SCHEMA</span>
+          </div>
         </div>
       </div>
-      
-      <section id="products">
+
+      <section className="os" id="open-source">
         <div className="wrap">
-          <p className="sec-eyebrow">PRODUCTS</p>
+          <p className="os-eyebrow">OPEN SOURCE</p>
           <h2>One engine, many doors</h2>
-          <p className="sec-lede">
+          <p className="os-lede">
             Everything below runs the same core: a compiled validator where code generation is
-            allowed, an interpreter that passes the same suite where it is not, and an optional
-            native accelerator.
+            allowed, an interpreter that passes the same suite where it is not.
           </p>
-          <div className="grid">
-            <a className="card" href="https://github.com/ata-core/ata-validator">
-              <span className="tag">ENGINE</span>
-              <h3>ata-validator</h3>
-              <p>The JSON Schema engine. Draft 2020-12, draft 7 and the v1 dialect at 100% of the
-                 official suite, with compiler-grade error reports.</p>
-              <div className="stat">3 engines &middot; 0 required deps</div>
-            </a>
-            <a className="card" href="https://github.com/ata-core/ata-zod">
-              <span className="tag">BRIDGE</span>
-              <h3>@ata-project/zod</h3>
-              <p>zod 4 schemas on the ata engine. Same answers as zod, differential-tested;
-                 verdicts in nanoseconds, speed that survives a strict CSP.</p>
-              <div className="stat">13,030 values &middot; zero disagreements</div>
-            </a>
-            <a className="card" href="https://github.com/ata-core/ata-validator#ahead-of-time-compilation">
-              <span className="tag">BUILD</span>
-              <h3>ata build</h3>
-              <p>Schemas compiled ahead of time into standalone modules that import nothing.
-                 The validator disappears into your bundle.</p>
-              <div className="stat">~1 KB gzipped per schema</div>
-            </a>
-            <a className="card" href="https://github.com/ata-core/ata-vite">
-              <span className="tag">BUNDLER</span>
-              <h3>ata-vite</h3>
-              <p>The same ahead-of-time compilation as a Vite plugin: import a schema, get a
-                 compiled validator, ship no compiler to the browser.</p>
-              <div className="stat">js + ts &middot; path aliases</div>
-            </a>
-            <a className="card" href="https://github.com/ata-core/fastify-ata">
-              <span className="tag">SERVER</span>
-              <h3>fastify-ata</h3>
-              <p>Fastify wiring with the framework's own defaults applied. ata is listed in
-                 Fastify's documentation as an alternative validator.</p>
-              <div className="stat">drop-in validator compiler</div>
-            </a>
-            <a className="card" href="https://github.com/ata-core/ata-keywords">
-              <span className="tag">EXTEND</span>
-              <h3>@ata-project/keywords</h3>
-              <p>JavaScript-native checks JSON Schema cannot express, instanceof and typeof,
-                 compiled into the hot path instead of bolted on around it.</p>
-              <div className="stat">rejections stay nanoseconds</div>
-            </a>
+
+          <div className="os-list">
+            {PRODUCTS.map((p) => (
+              <article className="os-row" key={p.name}>
+                <div className="os-text">
+                  <p className="os-tag"><span>{p.idx}</span>{p.tag}</p>
+                  <h3>{p.headline}</h3>
+                  <p className="os-body">{p.body}</p>
+                  <a className="os-btn" href={p.href}>Explore {p.name}</a>
+                  <p className="os-meta">{p.meta}</p>
+                </div>
+                <div className={p.holo ? 'panel holo' : 'panel'}>
+                  <div className="panel-bar">{p.panel.title}</div>
+                  <pre>
+                    {p.panel.lines.map((l, i) => (
+                      <span key={i} className={l.c}>{l.t}{'\n'}</span>
+                    ))}
+                  </pre>
+                </div>
+              </article>
+            ))}
           </div>
         </div>
       </section>
-      
-      <section id="vision" className="pillars">
+
+      <section className="numbers" id="numbers">
         <div className="wrap">
-          <p className="sec-eyebrow">VISION</p>
-          <h2>Where the layer goes</h2>
-          <p className="sec-lede">
-            Infrastructure is judged by who builds on it. The work is making ata the engine other
-            things embed, three fronts at a time.
-          </p>
-          <div className="cols">
-            <div className="col">
-              <h3><span>01</span>Runtimes</h3>
-              <p>A dependency-free, eval-free interpreter that passes the official suite in full,
-                 small enough to vendor. Verified in public through Bowtie, the
-                 cross-implementation JSON Schema harness, so a runtime never has to take our
-                 word for it.</p>
-            </div>
-            <div className="col">
-              <h3><span>02</span>Build time</h3>
-              <p>Validation that compiles away. Ahead-of-time output has no runtime dependency and
-                 costs about a kilobyte per schema, so the bundle argument ends; the plugin layer
-                 brings the same output to every bundler.</p>
-            </div>
-            <div className="col">
-              <h3><span>03</span>Behind your DSL</h3>
-              <p>Nobody should migrate schemas to get engine speed. Standard Schema V1 in and out,
-                 zod running on the engine today, and the same door open to every library that can
-                 emit JSON Schema.</p>
-            </div>
+          <h2>
+            Small numbers, stated <em>plainly</em>
+          </h2>
+          <div className="num-grid">
+            <div><div className="n">3,503</div><p>npm downloads last week</p></div>
+            <div><div className="n">3,359<span>/3,359</span></div><p>official suite cases passing, three dialects</p></div>
+            <div><div className="n">12</div><p>packages on npm, one engine underneath</p></div>
           </div>
+          <p className="num-note">as of 2026-09-06 &middot; every figure re-runs in CI on each change, with code generation enabled and blocked</p>
         </div>
       </section>
-      
-      <section className="thesis">
+
+      <section className="mission">
         <div className="wrap">
           <blockquote>
-            &ldquo;A validator that wrongly rejects gets a bug report.<br />
-            One that wrongly accepts does not.<br />
-            <em>Correct first, then fastest.</em>&rdquo;
+            A validator that wrongly rejects gets a bug report. One that wrongly accepts does
+            not. So the order is fixed: <em>correct first, then fastest,</em> everywhere
+            JavaScript runs.
           </blockquote>
-          <p>
-            Every figure on this page is measured, not estimated, and every claim runs in CI:
-            the full official suite on three dialects, with code generation enabled and blocked,
-            on every change.
-          </p>
+          <a className="btn btn-primary" href="https://ata-validator.com/docs">Read the docs</a>
         </div>
       </section>
-      
+
+      <section className="resources">
+        <div className="wrap">
+          <h2>Go deeper</h2>
+          <div className="res-grid">
+            <a href="https://ata-validator.com/docs/benchmarks">
+              <p className="res-tag">BENCHMARKS</p>
+              <h3>The numbers behind the claims</h3>
+              <p>Per-request cost, startup, bundle size, and what blocked codegen costs.</p>
+            </a>
+            <a href="https://ata-validator.com/docs/integrations">
+              <p className="res-tag">INTEGRATIONS</p>
+              <h3>zod, Fastify, Vite, forms</h3>
+              <p>Every door into the engine, each with setup and the measured cost.</p>
+            </a>
+            <a href="https://ata-validator.com/playground">
+              <p className="res-tag">PLAYGROUND</p>
+              <h3>Try it in your browser</h3>
+              <p>Schema in, verdict and compiler-grade errors out, with the compiled module.</p>
+            </a>
+          </div>
+        </div>
+      </section>
+
+      <div className="banner">
+        <span className="banner-mark">a<span>_</span></span>
+      </div>
+
       <footer>
-        <div className="wrap foot-in">
-          <div className="measured">measured on Node 25, Apple silicon &middot; zod 4.5.4 &middot; ata-validator 1.13.1</div>
-          <div className="foot-links">
+        <div className="wrap foot-grid">
+          <div>
+            <p className="foot-h">PRODUCTS</p>
+            <a href="https://github.com/ata-core/ata-validator">ata-validator</a>
+            <a href="https://github.com/ata-core/ata-zod">@ata-project/zod</a>
+            <a href="https://github.com/ata-core/ata-keywords">@ata-project/keywords</a>
+            <a href="https://github.com/ata-core/ata-vite">ata-vite</a>
+            <a href="https://github.com/ata-core/fastify-ata">fastify-ata</a>
+          </div>
+          <div>
+            <p className="foot-h">DOCS</p>
+            <a href="https://ata-validator.com/docs/quick-start">Quick start</a>
+            <a href="https://ata-validator.com/docs/benchmarks">Benchmarks</a>
+            <a href="https://ata-validator.com/docs/compliance">Compliance</a>
+            <a href="https://ata-validator.com/docs/api">API reference</a>
+          </div>
+          <div>
+            <p className="foot-h">ELSEWHERE</p>
             <a href="https://github.com/ata-core">GitHub</a>
             <a href="https://www.npmjs.com/package/ata-validator">npm</a>
-            <a href="https://ata-validator.com">Docs</a>
             <a href="https://ata-validator.com/playground">Playground</a>
+          </div>
+          <div className="foot-note">
+            <p className="foot-h">MEASURED ON</p>
+            <p>Node 25, Apple silicon<br />zod 4.5.4 &middot; ata-validator 1.13.1</p>
           </div>
         </div>
       </footer>
-      
     </>
   )
 }

@@ -7,15 +7,16 @@ describe('landing page', () => {
 
   test('renders the thesis and every product card', () => {
     for (const text of [
-      'The <em>validation layer</em>',
+      'The Validation <em>Layer</em>',
       'ata-validator',
       '@ata-project/zod',
       'ata build',
       'ata-vite',
       'fastify-ata',
       '@ata-project/keywords',
-      'Where the layer goes',
-      'Correct first, then fastest.',
+      'One engine, many doors',
+      '3,359',
+      'correct first, then fastest,',
     ]) {
       expect(html).toContain(text)
     }
