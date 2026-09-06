@@ -1,45 +1,30 @@
-const TICKER = [
-  'ata-validator 1.13.1',
-  '@ata-project/zod 0.1.0',
-  '@ata-project/keywords 0.2.0',
-  'ata-vite 0.4.x',
-  'fastify-ata 0.9.x',
-  '7 native builds',
-  'suite 3,359 / 3,359',
-]
-
 function StackDiagram() {
-  const layer = (cy: number) =>
-    `720,${cy - 34} 852,${cy} 720,${cy + 34} 588,${cy}`
+  const slab = (cy: number, cls: string) => (
+    <g className={cls} transform={`translate(480,${cy}) scale(1,0.5) rotate(45)`}>
+      <rect x="-96" y="-96" width="192" height="192" rx="26" />
+    </g>
+  )
   return (
-    <svg className="stack" viewBox="280 30 940 340" role="img" aria-label="Schemas flow into the ata engine and run everywhere">
-      {/* leader lines + labels, left */}
-      <g className="d-label" textAnchor="end">
-        <line x1="470" y1="96" x2="588" y2="96" />
-        <text x="462" y="100">your schemas</text>
-        <line x1="470" y1="200" x2="588" y2="200" />
-        <text x="462" y="204">the ata engine</text>
-        <line x1="470" y1="304" x2="588" y2="304" />
-        <text x="462" y="308">everywhere</text>
+    <svg className="stack" viewBox="0 0 960 360" role="img" aria-label="Schemas run on the ata engine, everywhere">
+      <g className="d-links">
+        <line x1="272" y1="80" x2="410" y2="80" />
+        <line x1="550" y1="180" x2="688" y2="180" />
+        <line x1="272" y1="280" x2="410" y2="280" />
       </g>
-      {/* leader lines + labels, right */}
-      <g className="d-label" textAnchor="start">
-        <line x1="852" y1="96" x2="970" y2="96" />
-        <text x="978" y="100">zod &middot; OpenAPI &middot; JSON Schema</text>
-        <line x1="852" y1="200" x2="970" y2="200" />
-        <text x="978" y="204">compiled &middot; interpreted &middot; native</text>
-        <line x1="852" y1="304" x2="970" y2="304" />
-        <text x="978" y="308">node &middot; edge &middot; browser &middot; build</text>
+      {slab(280, 'd-slab')}
+      {slab(180, 'd-slab d-mid')}
+      {slab(80, 'd-slab')}
+      <g className="d-chip" transform="translate(160,80)">
+        <rect x="0" y="-14" width="112" height="28" rx="14" />
+        <text x="56" y="4">YOUR SCHEMAS</text>
       </g>
-      {/* the stack */}
-      <g className="d-layer">
-        <polygon points={layer(96)} />
-        <polygon points={layer(200)} className="d-mid" />
-        <polygon points={layer(304)} />
+      <g className="d-chip d-chip-dark" transform="translate(688,180)">
+        <rect x="0" y="-14" width="100" height="28" rx="14" />
+        <text x="50" y="4">ATA ENGINE</text>
       </g>
-      <g className="d-drop">
-        <line x1="720" y1="130" x2="720" y2="166" />
-        <line x1="720" y1="234" x2="720" y2="270" />
+      <g className="d-chip" transform="translate(160,280)">
+        <rect x="0" y="-14" width="112" height="28" rx="14" />
+        <text x="56" y="4">EVERYWHERE</text>
       </g>
     </svg>
   )
@@ -171,14 +156,6 @@ const PRODUCTS: Product[] = [
 export default function App() {
   return (
     <>
-      <div className="ticker">
-        <div className="wrap ticker-in">
-          {TICKER.map((t) => (
-            <span key={t}>{t}</span>
-          ))}
-        </div>
-      </div>
-
       <nav>
         <div className="wrap nav-in">
           <a className="mark" href="/">ata<span>_</span>project</a>
@@ -193,7 +170,7 @@ export default function App() {
 
       <header className="hero">
         <div className="wrap">
-          <p className="status"><i /> every figure on this page / measured</p>
+          <p className="status"><i /> every figure / measured</p>
           <h1>
             The Validation <em>Layer</em>
             <br />
@@ -203,10 +180,6 @@ export default function App() {
             JSON Schema is the intermediate representation of validation: OpenAPI speaks it,
             LLMs emit it, schema libraries compile to it. ata executes it, everywhere.
           </p>
-          <div className="cta">
-            <a className="btn btn-primary" href="https://ata-validator.com/docs/quick-start">Get started</a>
-            <a className="btn btn-ghost" href="https://www.npmjs.com/package/ata-validator">$ npm i ata-validator</a>
-          </div>
           <StackDiagram />
         </div>
       </header>
