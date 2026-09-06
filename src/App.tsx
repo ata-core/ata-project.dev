@@ -202,6 +202,43 @@ export default function App() {
         </div>
       </div>
 
+      <section className="perf" id="performance">
+        <div className="wrap">
+          <p className="perf-eyebrow">PERFORMANCE</p>
+          <div className="perf-rows">
+            <div className="perf-row">
+              <div className="perf-num">5<span>ns</span></div>
+              <div className="perf-label">
+                <p>0 &rarr; VERDICT</p>
+                <p>an invalid document, rejected, through a zod schema</p>
+              </div>
+            </div>
+            <div className="perf-row">
+              <div className="perf-num">21<span>ns</span></div>
+              <div className="perf-label">
+                <p>ACCEPT</p>
+                <p>a valid document through the same schema</p>
+              </div>
+            </div>
+            <div className="perf-row">
+              <div className="perf-num">200<span>M/s</span></div>
+              <div className="perf-label">
+                <p>VERDICTS PER SECOND</p>
+                <p>one core, the 5 ns median restated</p>
+              </div>
+            </div>
+            <div className="perf-row">
+              <div className="perf-num">~1<span>KB</span></div>
+              <div className="perf-label">
+                <p>CURB WEIGHT</p>
+                <p>a schema compiled ahead of time, gzipped, zero dependencies</p>
+              </div>
+            </div>
+          </div>
+          <p className="perf-note">interleaved medians, Node 25, Apple silicon, zod 4.5.4, ata-validator 1.13.1</p>
+        </div>
+      </section>
+
       <section className="os" id="open-source">
         <div className="wrap">
           <p className="os-eyebrow">GITHUB.COM/ATA-CORE</p>
