@@ -169,6 +169,7 @@ export default function App() {
       </nav>
 
       <header className="hero">
+        <div className="hero-word" aria-hidden="true">ata</div>
         <div className="wrap">
           <p className="status"><i /> every figure / measured</p>
           <h1>

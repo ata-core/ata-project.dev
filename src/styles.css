@@ -41,7 +41,20 @@ nav {
 .nav-links a:hover { color: var(--ink); }
 
 /* hero */
-.hero { padding: 92px 0 64px; text-align: center; }
+.hero { padding: 92px 0 64px; text-align: center; position: relative; overflow: hidden; }
+.hero .wrap { position: relative; }
+.hero-word {
+  position: absolute;
+  top: -0.42em; left: 50%; transform: translateX(-50%);
+  font-family: var(--mono);
+  font-size: clamp(220px, 28vw, 380px);
+  font-weight: 600;
+  letter-spacing: -0.06em;
+  line-height: 1;
+  background: linear-gradient(180deg, #ffffff 8%, #eaeae7 92%);
+  -webkit-background-clip: text; background-clip: text; color: transparent;
+  user-select: none; pointer-events: none;
+}
 .status {
   display: inline-flex; align-items: center; gap: 9px;
   padding: 8px 16px; border: 1px solid var(--line); border-radius: 8px;
