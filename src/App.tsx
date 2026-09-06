@@ -6,25 +6,31 @@ function StackDiagram() {
   )
   return (
     <svg className="stack" viewBox="0 0 960 360" role="img" aria-label="Schemas run on the ata engine, everywhere">
-      <g className="d-links">
+      <g className="fx fx-fade d-links">
         <line x1="272" y1="80" x2="410" y2="80" />
         <line x1="550" y1="180" x2="688" y2="180" />
         <line x1="272" y1="280" x2="410" y2="280" />
       </g>
-      {slab(280, 'd-slab')}
-      {slab(180, 'd-slab d-mid')}
-      {slab(80, 'd-slab')}
-      <g className="d-chip" transform="translate(104,80)">
-        <rect x="0" y="-19" width="160" height="38" rx="19" />
-        <text x="80" y="5">YOUR SCHEMAS</text>
+      <g className="fx fx-down">{slab(280, 'd-slab')}</g>
+      <g className="fx fx-mid">{slab(180, 'd-slab d-mid')}</g>
+      <g className="fx fx-up">{slab(80, 'd-slab')}</g>
+      <g className="fx fx-left">
+        <g className="d-chip" transform="translate(104,80)">
+          <rect x="0" y="-19" width="160" height="38" rx="19" />
+          <text x="80" y="5">YOUR SCHEMAS</text>
+        </g>
       </g>
-      <g className="d-chip d-chip-dark" transform="translate(696,180)">
-        <rect x="0" y="-19" width="140" height="38" rx="19" />
-        <text x="70" y="5">ATA ENGINE</text>
+      <g className="fx fx-right">
+        <g className="d-chip d-chip-dark" transform="translate(696,180)">
+          <rect x="0" y="-19" width="140" height="38" rx="19" />
+          <text x="70" y="5">ATA ENGINE</text>
+        </g>
       </g>
-      <g className="d-chip" transform="translate(104,280)">
-        <rect x="0" y="-19" width="160" height="38" rx="19" />
-        <text x="80" y="5">EVERYWHERE</text>
+      <g className="fx fx-left">
+        <g className="d-chip" transform="translate(104,280)">
+          <rect x="0" y="-19" width="160" height="38" rx="19" />
+          <text x="80" y="5">EVERYWHERE</text>
+        </g>
       </g>
     </svg>
   )
@@ -169,7 +175,6 @@ export default function App() {
       </nav>
 
       <header className="hero">
-        <div className="hero-word" aria-hidden="true">ata</div>
         <div className="wrap">
           <p className="status"><i /> every figure / measured</p>
           <h1>

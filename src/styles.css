@@ -43,18 +43,6 @@ nav {
 /* hero */
 .hero { padding: 92px 0 64px; text-align: center; position: relative; overflow: hidden; }
 .hero .wrap { position: relative; }
-.hero-word {
-  position: absolute;
-  top: -0.42em; left: 50%; transform: translateX(-50%);
-  font-family: var(--mono);
-  font-size: clamp(220px, 28vw, 380px);
-  font-weight: 600;
-  letter-spacing: -0.06em;
-  line-height: 1;
-  background: linear-gradient(180deg, #ffffff 8%, #eaeae7 92%);
-  -webkit-background-clip: text; background-clip: text; color: transparent;
-  user-select: none; pointer-events: none;
-}
 .status {
   display: inline-flex; align-items: center; gap: 9px;
   padding: 8px 16px; border: 1px solid var(--line); border-radius: 8px;
@@ -96,6 +84,34 @@ h1 em, h2 em, .mission em {
 .d-chip text { font: 600 14px var(--mono); fill: var(--ink-2); letter-spacing: 0.08em; text-anchor: middle; }
 .d-chip-dark rect { fill: var(--ink); stroke: var(--ink); }
 .d-chip-dark text { fill: #ffffff; }
+
+/* scroll-driven assembly of the stack. The timeline is the diagram's own
+   journey through the viewport; browsers without scroll timelines (and
+   readers who prefer reduced motion) get the finished stack. */
+@media (prefers-reduced-motion: no-preference) {
+  @supports (animation-timeline: scroll()) {
+    .fx {
+      animation-timing-function: linear;
+      animation-fill-mode: both;
+      animation-timeline: scroll(root block);
+      animation-range: 0px 420px;
+    }
+    .fx-up { animation-name: fx-up; }
+    .fx-down { animation-name: fx-down; }
+    .fx-mid { animation-name: fx-mid; }
+    .fx-left { animation-name: fx-left; }
+    .fx-right { animation-name: fx-right; }
+    .fx-fade { animation-name: fx-fade; }
+  }
+}
+/* At rest the stack sits exploded, the way an engineering drawing holds its
+   parts apart; the first stretch of scroll clicks it together. */
+@keyframes fx-up { from { transform: translateY(-96px); } to { transform: none; } }
+@keyframes fx-down { from { transform: translateY(96px); } to { transform: none; } }
+@keyframes fx-mid { from { transform: none; } to { transform: none; } }
+@keyframes fx-left { from { transform: translateX(-56px); opacity: 0.35; } to { transform: none; opacity: 1; } }
+@keyframes fx-right { from { transform: translateX(56px); opacity: 0.35; } to { transform: none; opacity: 1; } }
+@keyframes fx-fade { from { opacity: 0; } to { opacity: 1; } }
 
 /* trust */
 .trust { border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); padding: 26px 0; }
