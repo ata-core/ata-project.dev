@@ -220,10 +220,10 @@ export default function App() {
               </div>
             </div>
             <div className="perf-row">
-              <div className="perf-num">200<span>M/s</span></div>
+              <div className="perf-num">42<span>&micro;s</span></div>
               <div className="perf-label">
-                <p>VERDICTS PER SECOND</p>
-                <p>one core, the 5 ns median restated</p>
+                <p>COLD START</p>
+                <p>compile(schema), a zod definition to a ready validator</p>
               </div>
             </div>
             <div className="perf-row">
@@ -234,7 +234,7 @@ export default function App() {
               </div>
             </div>
           </div>
-          <p className="perf-note">interleaved medians, Node 25, Apple silicon, zod 4.5.4, ata-validator 1.13.1</p>
+          <p className="perf-note">medians on Node 25, Apple silicon, zod 4.5.4, ata-validator 1.13.1</p>
         </div>
       </section>
 

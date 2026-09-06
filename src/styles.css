@@ -100,7 +100,7 @@ h1 em, h2 em, .mission em {
 .hero-strip {
   margin-top: 56px; padding-top: 24px; border-top: 1px solid #1e1e1e;
   display: flex; gap: 48px; flex-wrap: wrap; justify-content: center;
-  font: 500 13px/1 var(--mono); color: #6f6f68; letter-spacing: 0.02em;
+  font: 500 13px/1 var(--mono); color: #83837b; letter-spacing: 0.02em;
 }
 .hero-strip b { font-weight: 600; color: var(--dark-ink); margin-right: 7px; }
 
@@ -146,8 +146,8 @@ h1 em, h2 em, .mission em {
 .perf-num span { font-size: 0.38em; letter-spacing: 0; color: #8f8dff; -webkit-text-fill-color: #8f8dff; margin-left: 6px; }
 .perf-label { text-align: right; }
 .perf-label p:first-child { font: 600 12.5px/1 var(--mono); letter-spacing: 0.12em; color: var(--dark-ink); }
-.perf-label p:last-child { margin-top: 8px; font-size: 14px; color: #6f6f68; }
-.perf-note { margin-top: 26px; font: 500 11.5px/1.6 var(--mono); color: #55554f; }
+.perf-label p:last-child { margin-top: 8px; font-size: 14px; color: #83837b; }
+.perf-note { margin-top: 26px; font: 500 11.5px/1.6 var(--mono); color: #74746c; }
 
 /* open source, the dark act */
 .os { background: var(--dark); color: var(--dark-ink-2); padding: 88px 0 104px; }
@@ -188,7 +188,7 @@ h1 em, h2 em, .mission em {
 .panel.holo { position: relative; }
 .panel.holo::before {
   content: ""; display: block; height: 8px;
-  background: linear-gradient(90deg, #3d3bd4, #7a5cff, #2fb7e8, #b04ce8, #3d3bd4);
+  background: linear-gradient(90deg, #3d3bd4, #8f8dff 45%, #c9c8ff 55%, #8f8dff 65%, #3d3bd4);
 }
 
 /* numbers */
