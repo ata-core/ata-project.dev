@@ -150,8 +150,8 @@ const PRODUCTS: Product[] = [
     name: '@ata-project/zod',
     headline: 'zod schemas on the engine',
     body:
-      'Same answers as zod, differential-tested on 13,030 values. Verdicts in 21 ns, rejections in 5, and the speed survives a strict CSP where compiled zod loses its advantage.',
-    meta: 'v0.1.0 · 13,030-value differential suite',
+      'Same answers as zod, differential-tested on 13,030 values. Verdicts in 21 ns, rejections in 5, and isValidBytes answers straight from raw bytes with no JSON.parse, a path zod does not have.',
+    meta: 'v0.2.0 · 13,030-value differential suite · raw-byte verdicts',
     href: 'https://github.com/ata-core/ata-zod',
     dial: true,
     panel: {
