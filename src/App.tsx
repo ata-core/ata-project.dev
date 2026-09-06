@@ -1,30 +1,30 @@
 function StackDiagram() {
   const slab = (cy: number, cls: string) => (
-    <g className={cls} transform={`translate(480,${cy}) scale(1,0.5) rotate(45)`}>
+    <g className={cls} transform={`translate(340,${cy}) scale(1,0.5) rotate(45)`}>
       <rect x="-96" y="-96" width="192" height="192" rx="26" />
     </g>
   )
   return (
-    <svg className="stack" viewBox="0 0 960 360" role="img" aria-label="Schemas run on the ata engine, everywhere">
+    <svg className="stack" viewBox="0 0 640 460" role="img" aria-label="Schemas run on the ata engine, everywhere">
       <g className="d-links">
-        <line x1="272" y1="80" x2="410" y2="80" />
-        <line x1="550" y1="180" x2="688" y2="180" />
-        <line x1="272" y1="280" x2="410" y2="280" />
+        <line x1="150" y1="100" x2="212" y2="100" />
+        <line x1="470" y1="230" x2="504" y2="230" />
+        <line x1="150" y1="360" x2="212" y2="360" />
       </g>
-      {slab(280, 'd-slab')}
-      {slab(180, 'd-slab d-mid')}
-      {slab(80, 'd-slab')}
-      <g className="d-chip" transform="translate(104,80)">
-          <rect x="0" y="-19" width="160" height="38" rx="19" />
-        <text x="80" y="5">YOUR SCHEMAS</text>
+      {slab(360, 'd-slab')}
+      {slab(230, 'd-slab d-mid')}
+      {slab(100, 'd-slab')}
+      <g className="d-chip" transform="translate(0,100)">
+        <rect x="0" y="-19" width="146" height="38" rx="19" />
+        <text x="73" y="5">YOUR SCHEMAS</text>
       </g>
-      <g className="d-chip d-chip-dark" transform="translate(696,180)">
-        <rect x="0" y="-19" width="140" height="38" rx="19" />
-        <text x="70" y="5">ATA ENGINE</text>
+      <g className="d-chip d-chip-dark" transform="translate(510,230)">
+        <rect x="0" y="-19" width="130" height="38" rx="19" />
+        <text x="65" y="5">ATA ENGINE</text>
       </g>
-      <g className="d-chip" transform="translate(104,280)">
-        <rect x="0" y="-19" width="160" height="38" rx="19" />
-        <text x="80" y="5">EVERYWHERE</text>
+      <g className="d-chip" transform="translate(0,360)">
+        <rect x="0" y="-19" width="146" height="38" rx="19" />
+        <text x="73" y="5">EVERYWHERE</text>
       </g>
     </svg>
   )
@@ -169,18 +169,28 @@ export default function App() {
       </nav>
 
       <header className="hero">
-        <div className="wrap">
-          <p className="status"><i /> every figure / measured</p>
-          <h1>
-            The Validation <em>Layer</em>
-            <br />
-            for JavaScript
-          </h1>
-          <p className="lede">
-            Most of the ecosystem already describes data with JSON Schema, from OpenAPI to
-            LLM structured outputs. ata is an engine for it that stays fast in every runtime.
-          </p>
+        <div className="wrap hero-grid">
+          <div className="hero-copy">
+            <p className="status"><i /> EVERY FIGURE MEASURED</p>
+            <h1>
+              The Validation
+              <br />
+              <em>Layer</em> for
+              <br />
+              JavaScript
+            </h1>
+            <p className="lede">
+              Most of the ecosystem already describes data with JSON Schema, from OpenAPI to
+              LLM structured outputs. ata is an engine for it that stays fast in every runtime.
+            </p>
+          </div>
           <StackDiagram />
+        </div>
+        <div className="wrap hero-strip">
+          <span><b>5 ns</b> reject</span>
+          <span><b>21 ns</b> accept</span>
+          <span><b>~1 KB</b> compiled</span>
+          <span><b>3</b> dialects at 100%</span>
         </div>
       </header>
 
