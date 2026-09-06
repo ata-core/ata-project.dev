@@ -41,7 +41,7 @@ nav {
 .nav-links a:hover { color: var(--ink); }
 
 /* hero */
-.hero { padding: 92px 0 64px; text-align: center; position: relative; overflow: hidden; }
+.hero { padding: 92px 0 112px; text-align: center; position: relative; overflow: hidden; }
 .hero .wrap { position: relative; }
 .status {
   display: inline-flex; align-items: center; gap: 9px;
@@ -76,7 +76,7 @@ h1 em, h2 em, .mission em {
 .btn-ghost:hover { border-color: #b5b5af; color: var(--ink); }
 
 /* diagram */
-.stack { display: block; margin: 56px auto 0; width: min(640px, 94%); height: auto; }
+.stack { display: block; margin: 84px auto 0; width: min(640px, 94%); height: auto; }
 .d-slab rect { fill: #ffffff; stroke: #cfcfca; stroke-width: 1.4; }
 .d-mid rect { fill: #f2f1ff; stroke: var(--accent); }
 .d-links line { stroke: var(--ink-3); stroke-width: 1.2; stroke-dasharray: 1.5 4.5; stroke-linecap: round; }
@@ -106,11 +106,11 @@ h1 em, h2 em, .mission em {
 }
 /* At rest the stack sits exploded, the way an engineering drawing holds its
    parts apart; the first stretch of scroll clicks it together. */
-@keyframes fx-up { from { transform: translateY(-96px); } to { transform: none; } }
-@keyframes fx-down { from { transform: translateY(96px); } to { transform: none; } }
+@keyframes fx-up { from { transform: translateY(-58px); } to { transform: none; } }
+@keyframes fx-down { from { transform: translateY(58px); } to { transform: none; } }
 @keyframes fx-mid { from { transform: none; } to { transform: none; } }
-@keyframes fx-left { from { transform: translateX(-56px); opacity: 0.35; } to { transform: none; opacity: 1; } }
-@keyframes fx-right { from { transform: translateX(56px); opacity: 0.35; } to { transform: none; opacity: 1; } }
+@keyframes fx-left { from { transform: translateX(-36px); opacity: 0.35; } to { transform: none; opacity: 1; } }
+@keyframes fx-right { from { transform: translateX(36px); opacity: 0.35; } to { transform: none; opacity: 1; } }
 @keyframes fx-fade { from { opacity: 0; } to { opacity: 1; } }
 
 /* trust */
