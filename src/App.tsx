@@ -251,13 +251,8 @@ export default function App() {
 
       <header className="hero">
         <div className="wrap hero-copy">
-          <p className="status"><i /> EVERY FIGURE MEASURED</p>
           <h1 className="hero-word">ata</h1>
           <p className="hero-sub">THE VALIDATION LAYER FOR JAVASCRIPT</p>
-          <p className="lede">
-            Most of the ecosystem already describes data with JSON Schema, from OpenAPI to
-            LLM structured outputs. ata is an engine for it that stays fast in every runtime.
-          </p>
         </div>
         <div className="wrap hero-strip">
           <span><b>5 ns</b> reject</span>
@@ -266,6 +261,10 @@ export default function App() {
           <span><b>3</b> dialects at 100%</span>
         </div>
         <div className="wrap hero-stage">
+          <p className="lede">
+            Most of the ecosystem already describes data with JSON Schema, from OpenAPI to
+            LLM structured outputs. ata is an engine for it that stays fast in every runtime.
+          </p>
           <StackDiagram />
         </div>
       </header>
