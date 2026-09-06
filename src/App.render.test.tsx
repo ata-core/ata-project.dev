@@ -14,9 +14,9 @@ describe('landing page', () => {
       'ata-vite',
       'fastify-ata',
       '@ata-project/keywords',
-      'One engine, many doors',
+      'Open source',
       '3,359',
-      'correct first, then fastest,',
+      'correct first, then fast.',
     ]) {
       expect(html).toContain(text)
     }

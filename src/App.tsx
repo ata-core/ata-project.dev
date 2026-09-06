@@ -89,7 +89,7 @@ const PRODUCTS: Product[] = [
     name: 'ata build',
     headline: 'Validation that compiles away',
     body:
-      'Schemas become standalone modules that import nothing, so the validator disappears into your bundle and the size argument ends.',
+      'Schemas become standalone modules that import nothing. The validator ships inside your bundle, at about a kilobyte per schema.',
     meta: '~1 KB gzipped per schema · 0 runtime deps',
     href: 'https://github.com/ata-core/ata-validator#ahead-of-time-compilation',
     panel: {
@@ -138,9 +138,9 @@ const PRODUCTS: Product[] = [
     idx: '06',
     tag: 'EXTEND',
     name: '@ata-project/keywords',
-    headline: 'Checks JSON Schema cannot say',
+    headline: 'instanceof and typeof',
     body:
-      'instanceof and typeof, compiled into the hot path instead of bolted on around it, so custom keywords keep rejections at nanoseconds.',
+      'JavaScript-native checks that JSON Schema has no words for, compiled into the hot path instead of bolted on around it. Rejections stay at nanoseconds.',
     meta: 'v0.2.0 · compiled keyword checks',
     href: 'https://github.com/ata-core/ata-keywords',
     panel: {
@@ -177,8 +177,8 @@ export default function App() {
             for JavaScript
           </h1>
           <p className="lede">
-            JSON Schema is the intermediate representation of validation: OpenAPI speaks it,
-            LLMs emit it, schema libraries compile to it. ata executes it, everywhere.
+            Most of the ecosystem already describes data with JSON Schema, from OpenAPI to
+            LLM structured outputs. ata is an engine for it that stays fast in every runtime.
           </p>
           <StackDiagram />
         </div>
@@ -198,11 +198,11 @@ export default function App() {
 
       <section className="os" id="open-source">
         <div className="wrap">
-          <p className="os-eyebrow">OPEN SOURCE</p>
-          <h2>One engine, many doors</h2>
+          <p className="os-eyebrow">GITHUB.COM/ATA-CORE</p>
+          <h2>Open source</h2>
           <p className="os-lede">
-            Everything below runs the same core: a compiled validator where code generation is
-            allowed, an interpreter that passes the same suite where it is not.
+            Every package below runs the same core: a compiled validator where code generation
+            is allowed, and an interpreter that passes the same test suite where it is not.
           </p>
 
           <div className="os-list">
@@ -231,9 +231,7 @@ export default function App() {
 
       <section className="numbers" id="numbers">
         <div className="wrap">
-          <h2>
-            Small numbers, stated <em>plainly</em>
-          </h2>
+          <h2>The numbers</h2>
           <div className="num-grid">
             <div><div className="n">3,503</div><p>npm downloads last week</p></div>
             <div><div className="n">3,359<span>/3,359</span></div><p>official suite cases passing, three dialects</p></div>
@@ -247,8 +245,7 @@ export default function App() {
         <div className="wrap">
           <blockquote>
             A validator that wrongly rejects gets a bug report. One that wrongly accepts does
-            not. So the order is fixed: <em>correct first, then fastest,</em> everywhere
-            JavaScript runs.
+            not. ata is built in that order: <em>correct first, then fast.</em>
           </blockquote>
           <a className="btn btn-primary" href="https://ata-validator.com/docs">Read the docs</a>
         </div>
@@ -256,17 +253,17 @@ export default function App() {
 
       <section className="resources">
         <div className="wrap">
-          <h2>Go deeper</h2>
+          <h2>Resources</h2>
           <div className="res-grid">
             <a href="https://ata-validator.com/docs/benchmarks">
               <p className="res-tag">BENCHMARKS</p>
-              <h3>The numbers behind the claims</h3>
-              <p>Per-request cost, startup, bundle size, and what blocked codegen costs.</p>
+              <h3>What validation costs</h3>
+              <p>Per-request cost, startup, bundle size, and the price of blocked codegen.</p>
             </a>
             <a href="https://ata-validator.com/docs/integrations">
               <p className="res-tag">INTEGRATIONS</p>
               <h3>zod, Fastify, Vite, forms</h3>
-              <p>Every door into the engine, each with setup and the measured cost.</p>
+              <p>Each integration on its own page, with setup and the measured cost.</p>
             </a>
             <a href="https://ata-validator.com/playground">
               <p className="res-tag">PLAYGROUND</p>
