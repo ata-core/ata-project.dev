@@ -14,17 +14,17 @@ function StackDiagram() {
       {slab(280, 'd-slab')}
       {slab(180, 'd-slab d-mid')}
       {slab(80, 'd-slab')}
-      <g className="d-chip" transform="translate(160,80)">
-        <rect x="0" y="-14" width="112" height="28" rx="14" />
-        <text x="56" y="4">YOUR SCHEMAS</text>
+      <g className="d-chip" transform="translate(104,80)">
+        <rect x="0" y="-19" width="160" height="38" rx="19" />
+        <text x="80" y="5">YOUR SCHEMAS</text>
       </g>
-      <g className="d-chip d-chip-dark" transform="translate(688,180)">
-        <rect x="0" y="-14" width="100" height="28" rx="14" />
-        <text x="50" y="4">ATA ENGINE</text>
+      <g className="d-chip d-chip-dark" transform="translate(696,180)">
+        <rect x="0" y="-19" width="140" height="38" rx="19" />
+        <text x="70" y="5">ATA ENGINE</text>
       </g>
-      <g className="d-chip" transform="translate(160,280)">
-        <rect x="0" y="-14" width="112" height="28" rx="14" />
-        <text x="56" y="4">EVERYWHERE</text>
+      <g className="d-chip" transform="translate(104,280)">
+        <rect x="0" y="-19" width="160" height="38" rx="19" />
+        <text x="80" y="5">EVERYWHERE</text>
       </g>
     </svg>
   )
