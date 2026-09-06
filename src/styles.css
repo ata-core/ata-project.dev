@@ -94,34 +94,6 @@ h1 em, h2 em, .mission em {
 .d-chip-dark rect { fill: #f2f2ef; stroke: #f2f2ef; }
 .d-chip-dark text { fill: #0b0b0b; }
 
-/* scroll-driven assembly of the stack. The timeline is the diagram's own
-   journey through the viewport; browsers without scroll timelines (and
-   readers who prefer reduced motion) get the finished stack. */
-@media (prefers-reduced-motion: no-preference) {
-  @supports (animation-timeline: scroll()) {
-    .fx {
-      animation-timing-function: linear;
-      animation-fill-mode: both;
-      animation-timeline: scroll(root block);
-      animation-range: 0px 420px;
-    }
-    .fx-up { animation-name: fx-up; }
-    .fx-down { animation-name: fx-down; }
-    .fx-mid { animation-name: fx-mid; }
-    .fx-left { animation-name: fx-left; }
-    .fx-right { animation-name: fx-right; }
-    .fx-fade { animation-name: fx-fade; }
-  }
-}
-/* At rest the stack sits exploded, the way an engineering drawing holds its
-   parts apart; the first stretch of scroll clicks it together. */
-@keyframes fx-up { from { transform: translateY(-58px); } to { transform: none; } }
-@keyframes fx-down { from { transform: translateY(58px); } to { transform: none; } }
-@keyframes fx-mid { from { transform: none; } to { transform: none; } }
-@keyframes fx-left { from { transform: translateX(-36px); opacity: 0.35; } to { transform: none; opacity: 1; } }
-@keyframes fx-right { from { transform: translateX(36px); opacity: 0.35; } to { transform: none; opacity: 1; } }
-@keyframes fx-fade { from { opacity: 0; } to { opacity: 1; } }
-
 /* trust */
 .trust { background: var(--dark); border-top: 1px solid #1a1a1a; padding: 26px 0; }
 .trust p { text-align: center; font-size: 12.5px; color: #6f6f68; }
