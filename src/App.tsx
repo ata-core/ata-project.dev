@@ -158,7 +158,7 @@ export default function App() {
     <>
       <nav>
         <div className="wrap nav-in">
-          <a className="mark" href="/"><img className="mark-glyph" src="/logo.svg" alt="" />ata<span>-</span>project</a>
+          <a className="mark" href="/">ata project</a>
           <div className="nav-links">
             <a href="#open-source">Open source</a>
             <a href="#numbers">Numbers</a>
@@ -275,7 +275,7 @@ export default function App() {
       </section>
 
       <div className="banner">
-        <span className="banner-mark">ata<span>-</span>project</span>
+        <span className="banner-mark">ata project</span>
       </div>
 
       <footer>
