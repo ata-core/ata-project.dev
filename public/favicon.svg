@@ -1,13 +1,6 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120">
-  <defs>
-    <linearGradient id="ata-g" x1="18%" y1="8%" x2="85%" y2="95%">
-      <stop offset="0" stop-color="#7b79ff"/>
-      <stop offset=".55" stop-color="#3d3bd4"/>
-      <stop offset="1" stop-color="#232094"/>
-    </linearGradient>
-  </defs>
-  <g transform="rotate(45 60 60)">
-    <rect x="24" y="24" width="72" height="72" rx="17" fill="url(#ata-g)"/>
-  </g>
-  <path d="M42 62 L55 75 L80 46" fill="none" stroke="#ffffff" stroke-width="10" stroke-linecap="round" stroke-linejoin="round"/>
+  <rect width="120" height="120" rx="26" fill="#ffffff"/>
+  <path d="M60 21 L96 39 L60 57 L24 39 Z" fill="#0b0b0b"/>
+  <path d="M60 44 L96 62 L60 80 L24 62 Z" fill="#3d3bd4"/>
+  <path d="M60 67 L96 85 L60 103 L24 85 Z" fill="#0b0b0b"/>
 </svg>
