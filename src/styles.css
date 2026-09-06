@@ -36,7 +36,8 @@ nav {
   border-bottom: 1px solid var(--line);
 }
 .nav-in { display: flex; align-items: center; justify-content: space-between; height: 60px; }
-.mark { font-weight: 700; font-size: 16px; color: var(--ink); letter-spacing: -0.01em; }
+.mark { display: inline-flex; align-items: center; gap: 10px; font-weight: 700; font-size: 16px; color: var(--ink); letter-spacing: -0.01em; }
+.mark-glyph { width: 24px; height: 24px; }
 .mark span { color: var(--accent); }
 .nav-links { display: flex; gap: 26px; font-size: 14px; color: var(--ink-2); }
 .nav-links a:hover { color: var(--ink); }
