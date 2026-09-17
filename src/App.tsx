@@ -130,7 +130,7 @@ const PRODUCTS: Product[] = [
     headline: 'The JSON Schema engine',
     body:
       'Draft 2020-12, draft 7 and the v1 dialect at 100% of the official suite, compiled and interpreted alike, with compiler-grade error reports and an optional native accelerator.',
-    meta: '★ 359 · 7 native builds · 0 required deps',
+    meta: '★ 364 · 7 native builds · 0 required deps',
     href: 'https://github.com/ata-core/ata-validator',
     holo: true,
     panel: {
@@ -359,16 +359,54 @@ export default function App() {
         <div className="wrap">
           <h2>The numbers</h2>
           <div className="num-grid">
-            <div><div className="n">3,503</div><p>npm downloads last week</p></div>
-            <div><div className="n">3,359<span>/3,359</span></div><p>official suite cases passing, three dialects</p></div>
-            <div><div className="n">12</div><p>packages on npm, one engine underneath</p></div>
+            <div><div className="n">2,750</div><p>npm downloads last week</p></div>
+            <div><div className="n">3,365<span>/3,365</span></div><p>official suite cases passing, three dialects</p></div>
+            <div><div className="n">15</div><p>packages on npm, one engine underneath</p></div>
           </div>
-          <p className="num-note">as of 2026-09-06, on Node 25, Apple silicon, zod 4.5.4, ata-validator 1.13.1 &middot; every figure re-runs in CI on each change, with code generation enabled and blocked</p>
+          <p className="num-note">as of 2026-09-17, ata-validator 1.25.0 &middot; suite figures re-run in CI on each change, with code generation enabled and blocked</p>
         </div>
       </section>
 
-      <section className="mission">
+      <section className="mission" id="manifesto">
         <div className="wrap">
+          <p className="perf-eyebrow">MANIFESTO</p>
+          <div className="mani-body">
+            <p>
+              Software no longer talks only to software. Models write JSON now. Configs are
+              generated. Payloads cross runtimes that forbid eval. Every one of those
+              crossings is a boundary, and every boundary is a promise nobody checked.
+            </p>
+            <p>
+              We think validation belongs at build time. A schema is not a runtime guest, it
+              is code: compile it, ship the result, let it carry its own errors, its own file
+              positions, its own hash. No dependency at the boundary. Nothing generated at
+              runtime. Nothing accepted silently.
+            </p>
+            <p>ata is that compiler.</p>
+          </div>
+          <ul className="mani-proof">
+            <li>
+              <a href="https://ata-validator.com/docs/compliance">
+                100% of the official JSON Schema test suite, three dialects, with eval blocked.
+              </a>
+            </li>
+            <li>
+              <a href="https://ata-validator.com/docs/integrations/cloudflare-workers">
+                27,024,938 verdicts per second on the platform where most validators cannot start.
+              </a>
+            </li>
+            <li>
+              <a href="https://github.com/mertcanaltin/ata-workers-demo">
+                A compiled module with zero imports: about 19 KB for the verdict, about 32 KB
+                with full per-field error detail.
+              </a>
+            </li>
+            <li>
+              <a href="https://ata-validator.com/docs/benchmarks">
+                Every number on this page has a harness you can run.
+              </a>
+            </li>
+          </ul>
           <blockquote>
             A validator that wrongly rejects gets a bug report. One that wrongly accepts does
             not. ata is built in that order: <em>correct first, then fast.</em>
