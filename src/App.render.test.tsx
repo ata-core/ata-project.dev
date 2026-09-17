@@ -24,7 +24,7 @@ describe('landing page', () => {
   })
 
   test('the figures name the versions they were measured on', () => {
-    expect(html).toContain('zod 4.5.4')
-    expect(html).toContain('ata-validator 1.13.1')
+    expect(html).toContain('zod 4.6.5')
+    expect(html).toContain('ata-validator 1.25.0')
   })
 })

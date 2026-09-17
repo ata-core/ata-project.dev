@@ -150,7 +150,7 @@ const PRODUCTS: Product[] = [
     name: '@ata-project/zod',
     headline: 'zod schemas on the engine',
     body:
-      'Same answers as zod, differential-tested on 13,030 values. Verdicts in 21 ns, rejections in 5, and isValidBytes answers straight from raw bytes with no JSON.parse, a path zod does not have.',
+      'Same answers as zod, differential-tested on 13,030 values. Verdicts in 20 ns, rejections in 5, and isValidBytes answers straight from raw bytes with no JSON.parse, a path zod does not have.',
     meta: 'v0.2.0 · 13,030-value differential suite · raw-byte verdicts',
     href: 'https://github.com/ata-core/ata-zod',
     dial: true,
@@ -159,8 +159,8 @@ const PRODUCTS: Product[] = [
       lines: [
         { t: "import { compile } from '@ata-project/zod'", c: 'dim' },
         { t: 'const check = compile(userSchema)' },
-        { t: 'check.isValid(data)   // 21 ns' },
-        { t: 'check.safeParse(bad)  // 6.7 ns, lazy ZodError' },
+        { t: 'check.isValid(data)   // 20 ns' },
+        { t: 'check.safeParse(bad)  // 6.5 ns, lazy ZodError' },
       ],
     },
   },
@@ -170,14 +170,14 @@ const PRODUCTS: Product[] = [
     name: 'ata build',
     headline: 'Validation that compiles away',
     body:
-      'Schemas become standalone modules that import nothing. The validator ships inside your bundle, at about a kilobyte per schema.',
-    meta: '~1 KB gzipped per schema · 0 runtime deps',
+      'Schemas become standalone modules that import nothing. The validator ships inside your bundle, from about one kilobyte gzipped for a simple schema to eight for a heavy one, full error detail included.',
+    meta: '1.1 to 7.6 KB gzipped across the bench schemas · 0 runtime deps',
     href: 'https://github.com/ata-core/ata-validator#ahead-of-time-compilation',
     panel: {
       title: 'shell',
       lines: [
         { t: '$ npx ata compile schema.json', c: 'dim' },
-        { t: 'validate.js  2.3 KB · 775 B gzip · 0 deps', c: 'ok' },
+        { t: 'schema.validator.mjs  4.9 KB · 1.4 KB gzip · 0 deps', c: 'ok' },
       ],
     },
   },
@@ -222,7 +222,7 @@ const PRODUCTS: Product[] = [
     headline: 'instanceof and typeof',
     body:
       'JavaScript-native checks that JSON Schema has no words for, compiled into the hot path instead of bolted on around it. Rejections stay at nanoseconds.',
-    meta: 'v0.2.0 · compiled keyword checks',
+    meta: 'v0.3.1 · compiled keyword checks',
     href: 'https://github.com/ata-core/ata-keywords',
     panel: {
       title: 'keywords.js',
@@ -256,8 +256,8 @@ export default function App() {
         </div>
         <div className="wrap hero-strip">
           <span><b>5 ns</b> reject</span>
-          <span><b>21 ns</b> accept</span>
-          <span><b>~1 KB</b> compiled</span>
+          <span><b>20 ns</b> accept</span>
+          <span><b>1.1 KB</b> compiled</span>
           <span><b>3</b> dialects at 100%</span>
         </div>
         <div className="wrap hero-stage">
@@ -293,28 +293,28 @@ export default function App() {
               </div>
             </div>
             <div className="perf-row">
-              <div className="perf-num">21<span>ns</span></div>
+              <div className="perf-num">20<span>ns</span></div>
               <div className="perf-label">
                 <p>ACCEPT</p>
                 <p>a valid document through the same schema</p>
               </div>
             </div>
             <div className="perf-row">
-              <div className="perf-num">42<span>&micro;s</span></div>
+              <div className="perf-num">47<span>&micro;s</span></div>
               <div className="perf-label">
                 <p>COLD START</p>
                 <p>compile(schema), a zod definition to a ready validator</p>
               </div>
             </div>
             <div className="perf-row">
-              <div className="perf-num">~1<span>KB</span></div>
+              <div className="perf-num">1.1<span>KB</span></div>
               <div className="perf-label">
                 <p>CURB WEIGHT</p>
-                <p>a schema compiled ahead of time, gzipped, zero dependencies</p>
+                <p>a simple schema compiled ahead of time, gzipped, zero dependencies</p>
               </div>
             </div>
           </div>
-          <p className="perf-note">medians on Node 25, Apple silicon, zod 4.5.4, ata-validator 1.13.1</p>
+          <p className="perf-note">medians on Node 25, Apple silicon, zod 4.6.5, ata-validator 1.25.0</p>
         </div>
       </section>
 
