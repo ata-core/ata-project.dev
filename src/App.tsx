@@ -171,7 +171,7 @@ const PRODUCTS: Product[] = [
     headline: 'Validation that compiles away',
     body:
       'Schemas become standalone modules that import nothing. The validator ships inside your bundle, from about one kilobyte gzipped for a simple schema to eight for a heavy one, full error detail included.',
-    meta: '1.1 to 7.6 KB gzipped across the bench schemas · 0 runtime deps',
+    meta: '1.3 to 7.8 KB gzipped across the bench schemas · 0 runtime deps',
     href: 'https://github.com/ata-core/ata-validator#ahead-of-time-compilation',
     panel: {
       title: 'shell',
@@ -257,7 +257,7 @@ export default function App() {
         <div className="wrap hero-strip">
           <span><b>5 ns</b> reject</span>
           <span><b>20 ns</b> accept</span>
-          <span><b>1.1 KB</b> compiled</span>
+          <span><b>1.3 KB</b> compiled</span>
           <span><b>3</b> dialects at 100%</span>
         </div>
         <div className="wrap hero-stage">
@@ -307,14 +307,14 @@ export default function App() {
               </div>
             </div>
             <div className="perf-row">
-              <div className="perf-num">1.1<span>KB</span></div>
+              <div className="perf-num">1.3<span>KB</span></div>
               <div className="perf-label">
                 <p>CURB WEIGHT</p>
                 <p>a simple schema compiled ahead of time, gzipped, zero dependencies</p>
               </div>
             </div>
           </div>
-          <p className="perf-note">medians on Node 25, Apple silicon, zod 4.6.5, ata-validator 1.25.0</p>
+          <p className="perf-note">medians on Node 25, Apple silicon, zod 4.6.5, ata-validator 1.25.0; the compiled size on ata-validator 1.32.1</p>
         </div>
       </section>
 
