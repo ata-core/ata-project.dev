@@ -203,7 +203,7 @@ h1 em, h2 em, .mission em {
 }
 
 /* numbers */
-.usedby { padding: 8px 0 104px; }
+.usedby { padding: 96px 0 104px; border-bottom: 1px solid var(--line); }
 .ub-eyebrow { font: 600 12px/1 var(--mono); letter-spacing: 0.12em; color: var(--ink-3); }
 .usedby h2 { margin-top: 18px; font-size: 38px; font-weight: 650; letter-spacing: -0.025em; color: var(--ink); }
 .ub-lede { margin-top: 12px; max-width: 560px; font-size: 15.5px; }
