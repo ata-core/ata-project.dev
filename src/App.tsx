@@ -296,7 +296,7 @@ export default function App() {
       <section className="usedby" id="used-by">
         <div className="wrap">
           <p className="ub-eyebrow">IN THE WILD</p>
-          <h2>Used by</h2>
+          <h2>Who uses <span className="ub-word">ata</span></h2>
           <p className="ub-lede">
             Projects whose code depends on ata, from GitHub&rsquo;s dependency graph, and what each
             does with it.
