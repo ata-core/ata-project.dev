@@ -234,6 +234,18 @@ const PRODUCTS: Product[] = [
   },
 ]
 
+// Projects whose code depends on ata, from GitHub's dependency graph, and the
+// framework that lists the plugin. Each line is what the project does with it,
+// checked against its own code, not an endorsement.
+const USED_BY: { name: string; href: string; what: string; path: string; logo?: string; mono?: string }[] = [
+  { name: 'react-jsonschema-form', href: 'https://github.com/rjsf-team/react-jsonschema-form', logo: '/refs/rjsf.png', path: 'rjsf-team/react-jsonschema-form', what: 'Ships an ata validator in its main repository, runtime and precompiled.' },
+  { name: 'Socket', href: 'https://github.com/SocketDev', logo: '/refs/socket.png', path: 'SocketDev', what: 'Uses ata, compiled ahead of time, in the shared build tooling of its repositories.' },
+  { name: 'JollyPixel', href: 'https://github.com/JollyPixel/editor', logo: '/refs/jollypixel.jpg', path: 'JollyPixel/editor', what: 'Parses and validates JSON on its back end with ata, compiled ahead of time.' },
+  { name: 'Fastify', href: 'https://fastify.dev/ecosystem/', logo: '/refs/fastify.png', path: 'fastify.dev/ecosystem', what: 'Lists the fastify-ata plugin in its ecosystem.' },
+  { name: 'better-drizzle', href: 'https://github.com/almeidazs/better-drizzle', mono: 'bd', path: 'almeidazs/better-drizzle', what: 'Ships an ata plugin for queries and rows.' },
+  { name: 'svelte-jsonschema-form', href: 'https://github.com/x0k/svelte-jsonschema-form', mono: 'sj', path: 'x0k/svelte-jsonschema-form', what: 'Publishes an ata validator package, runtime and precompiled.' },
+]
+
 export default function App() {
   return (
     <>
@@ -359,11 +371,36 @@ export default function App() {
         <div className="wrap">
           <h2>The numbers</h2>
           <div className="num-grid">
-            <div><div className="n">2,750</div><p>npm downloads last week</p></div>
+            <div><div className="n">4,260</div><p>npm downloads last week</p></div>
             <div><div className="n">3,365<span>/3,365</span></div><p>official suite cases passing, three dialects</p></div>
             <div><div className="n">15</div><p>packages on npm, one engine underneath</p></div>
           </div>
-          <p className="num-note">as of 2026-09-17, ata-validator 1.25.0 &middot; suite figures re-run in CI on each change, with code generation enabled and blocked</p>
+          <p className="num-note">downloads for 2026-09-20 to 2026-09-26, ata-validator 1.32.2 &middot; suite figures re-run in CI on each change, with code generation enabled and blocked</p>
+        </div>
+      </section>
+
+      <section className="usedby" id="used-by">
+        <div className="wrap">
+          <p className="ub-eyebrow">IN THE WILD</p>
+          <h2>Used by</h2>
+          <p className="ub-lede">
+            Projects whose code depends on ata, from GitHub&rsquo;s dependency graph, and what each
+            does with it.
+          </p>
+          <ul className="ub-grid">
+            {USED_BY.map((u) => (
+              <li key={u.name}>
+                <a href={u.href} target="_blank" rel="noopener noreferrer">
+                  {u.logo
+                    ? <img src={u.logo} alt="" width={36} height={36} loading="lazy" />
+                    : <span className="ub-mono" aria-hidden="true">{u.mono}</span>}
+                  <strong>{u.name}</strong>
+                  <span className="ub-what">{u.what}</span>
+                  <span className="ub-path">{u.path}</span>
+                </a>
+              </li>
+            ))}
+          </ul>
         </div>
       </section>
 
