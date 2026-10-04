@@ -290,6 +290,14 @@ export default function App() {
             <span>BOWTIE HARNESS</span>
             <span>STANDARD SCHEMA</span>
           </div>
+          <div className="trust-badges">
+            <a href="https://www.bestpractices.dev/projects/15196" target="_blank" rel="noopener noreferrer">
+              <img src="https://www.bestpractices.dev/projects/15196/badge" alt="OpenSSF Best Practices: passing" height={20} />
+            </a>
+            <a href="https://scorecard.dev/viewer/?uri=github.com/ata-core/ata-validator" target="_blank" rel="noopener noreferrer">
+              <img src="https://api.scorecard.dev/projects/github.com/ata-core/ata-validator/badge" alt="OpenSSF Scorecard" height={20} />
+            </a>
+          </div>
         </div>
       </div>
 
