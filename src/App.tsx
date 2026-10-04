@@ -246,6 +246,54 @@ const USED_BY: { name: string; href: string; what: string; path: string; logo?: 
   { name: 'svelte-jsonschema-form', href: 'https://github.com/x0k/svelte-jsonschema-form', mono: 'sj', path: 'x0k/svelte-jsonschema-form', what: 'Publishes an ata validator package, runtime and precompiled.' },
 ]
 
+// The project's supply-chain standing, read live from the two OpenSSF services so
+// the page never states a level or score the services no longer report. Until the
+// answers arrive, or if a service does not answer, a card is a plain link.
+function useLive<T>(url: string, pick: (j: any) => T | undefined): T | undefined {
+  const [v, setV] = useState<T | undefined>(undefined)
+  useEffect(() => {
+    if (typeof fetch !== 'function') return
+    let alive = true
+    fetch(url).then((r) => (r.ok ? r.json() : null)).then((j) => { if (alive && j) setV(pick(j)) }).catch(() => {})
+    return () => { alive = false }
+  }, [url])
+  return v
+}
+
+function Security() {
+  const level = useLive<string>('https://www.bestpractices.dev/projects/15196.json', (j) => j && j.badge_level)
+  const score = useLive<number>('https://api.scorecard.dev/projects/github.com/ata-core/ata-validator', (j) => j && j.score)
+  return (
+    <section className="security" id="security">
+      <div className="wrap">
+        <p className="sec-eyebrow">SUPPLY CHAIN</p>
+        <h2>Security</h2>
+        <div className="sec-grid">
+          <a className="sec-card sec-badge" href="https://www.bestpractices.dev/projects/15196" target="_blank" rel="noopener noreferrer">
+            <img src="/openssf-best-practices.svg" alt="" width={64} height={64} />
+            <div>
+              <div className="sec-v">{level ? level[0].toUpperCase() + level.slice(1) : 'Best Practices'}</div>
+              <p>OpenSSF Best Practices badge</p>
+            </div>
+          </a>
+          <a className="sec-card" href="https://scorecard.dev/viewer/?uri=github.com/ata-core/ata-validator" target="_blank" rel="noopener noreferrer">
+            <div className="sec-v">{typeof score === 'number' ? <>{score.toFixed(1)}<span>/10</span></> : 'Scorecard'}</div>
+            <p>OpenSSF Scorecard</p>
+          </a>
+          <a className="sec-card" href="https://www.npmjs.com/package/ata-validator#provenance" target="_blank" rel="noopener noreferrer">
+            <div className="sec-v">SLSA</div>
+            <p>npm provenance on every release, published from CI</p>
+          </a>
+          <a className="sec-card" href="https://github.com/ata-core/ata-validator/security" target="_blank" rel="noopener noreferrer">
+            <div className="sec-v">CodeQL</div>
+            <p>on every push, private vulnerability reports</p>
+          </a>
+        </div>
+      </div>
+    </section>
+  )
+}
+
 export default function App() {
   return (
     <>
@@ -289,23 +337,6 @@ export default function App() {
             <span>REACT-JSONSCHEMA-FORM</span>
             <span>BOWTIE HARNESS</span>
             <span>STANDARD SCHEMA</span>
-          </div>
-          <div className="trust-badges">
-            <a href="https://www.npmjs.com/package/ata-validator" target="_blank" rel="noopener noreferrer">
-              <img src="https://img.shields.io/npm/v/ata-validator" alt="npm version" height={20} onError={(e) => { (e.currentTarget.parentElement as HTMLElement).style.display = 'none' }} />
-            </a>
-            <a href="https://github.com/ata-core/ata-validator/blob/master/LICENSE" target="_blank" rel="noopener noreferrer">
-              <img src="https://img.shields.io/npm/l/ata-validator" alt="License: MIT" height={20} onError={(e) => { (e.currentTarget.parentElement as HTMLElement).style.display = 'none' }} />
-            </a>
-            <a href="https://scorecard.dev/viewer/?uri=github.com/ata-core/ata-validator" target="_blank" rel="noopener noreferrer">
-              <img src="https://api.scorecard.dev/projects/github.com/ata-core/ata-validator/badge" alt="OpenSSF Scorecard" height={20} onError={(e) => { (e.currentTarget.parentElement as HTMLElement).style.display = 'none' }} />
-            </a>
-            <a href="https://www.bestpractices.dev/projects/15196" target="_blank" rel="noopener noreferrer">
-              <img src="https://www.bestpractices.dev/projects/15196/badge" alt="OpenSSF Best Practices: passing" height={20} onError={(e) => { (e.currentTarget.parentElement as HTMLElement).style.display = 'none' }} />
-            </a>
-            <a href="https://socket.dev/npm/package/ata-validator" target="_blank" rel="noopener noreferrer">
-              <img src="https://badge.socket.dev/npm/package/ata-validator" alt="Socket" height={20} onError={(e) => { (e.currentTarget.parentElement as HTMLElement).style.display = 'none' }} />
-            </a>
           </div>
         </div>
       </div>
@@ -420,6 +451,8 @@ export default function App() {
           <p className="num-note">downloads for 2026-09-21 to 2026-09-27, ata-validator 1.36.0 &middot; suite figures re-run in CI on each change, with code generation enabled and blocked</p>
         </div>
       </section>
+
+      <Security />
 
       <section className="mission" id="manifesto">
         <div className="wrap">
