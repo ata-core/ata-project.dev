@@ -444,11 +444,11 @@ export default function App() {
         <div className="wrap">
           <h2>The numbers</h2>
           <div className="num-grid">
-            <div><div className="n">4,954</div><p>npm downloads last week</p></div>
+            <div><div className="n">8,289</div><p>npm downloads last week</p></div>
             <div><div className="n">3,365<span>/3,365</span></div><p>official suite cases passing, three dialects</p></div>
             <div><div className="n">15</div><p>packages on npm, one engine underneath</p></div>
           </div>
-          <p className="num-note">downloads for 2026-09-21 to 2026-09-27, ata-validator 1.36.0 &middot; suite figures re-run in CI on each change, with code generation enabled and blocked</p>
+          <p className="num-note">downloads for 2026-09-28 to 2026-10-04, ata-validator 1.46.0 &middot; suite figures re-run in CI on each change, with code generation enabled and blocked</p>
         </div>
       </section>
 
