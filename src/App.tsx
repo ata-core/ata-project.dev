@@ -448,7 +448,7 @@ export default function App() {
             <div><div className="n">3,365<span>/3,365</span></div><p>official suite cases passing, three dialects</p></div>
             <div><div className="n">15</div><p>packages on npm, one engine underneath</p></div>
           </div>
-          <p className="num-note">downloads for 2026-09-28 to 2026-10-04, ata-validator 1.47.0 &middot; suite figures re-run in CI on each change, with code generation enabled and blocked</p>
+          <p className="num-note">downloads for 2026-09-28 to 2026-10-04, ata-validator 1.48.0 &middot; suite figures re-run in CI on each change, with code generation enabled and blocked</p>
         </div>
       </section>
 

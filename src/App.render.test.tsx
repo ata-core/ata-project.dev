@@ -27,6 +27,6 @@ describe('landing page', () => {
     expect(html).toContain('zod 4.6.5')
     // The performance strip and the numbers section each name their own version.
     expect(html).toContain('ata-validator 1.33.1')
-    expect(html).toContain('ata-validator 1.47.0')
+    expect(html).toContain('ata-validator 1.48.0')
   })
 })
