@@ -403,6 +403,23 @@ export default function App() {
         </div>
       </section>
 
+      <section className="race" id="side-by-side">
+        <div className="wrap">
+          <p className="perf-eyebrow">SIDE BY SIDE</p>
+          <h2 className="race-title">One order body, eleven validators</h2>
+          <p className="race-lede">
+            900 valid orders, how many a second each library confirms them. Each library in its own
+            process, the median of 27 samples, Node 24.
+          </p>
+          <video className="race-video" src="/media/validator-race.mp4" poster="/media/validator-race.jpg" autoPlay muted loop playsInline />
+          <p className="perf-note">
+            ata 3.30M &middot; typebox 1.64M &middot; ajv 1.29M &middot; typia 0.94M &middot; zod 0.44M a second.
+            The bodies, the scenes where ata is behind, and how to run it yourself:{' '}
+            <a href="https://github.com/ata-core/validator-benchmarks">github.com/ata-core/validator-benchmarks</a>
+          </p>
+        </div>
+      </section>
+
       <section className="os" id="open-source">
         <div className="wrap">
           <p className="os-eyebrow">GITHUB.COM/ATA-CORE</p>
