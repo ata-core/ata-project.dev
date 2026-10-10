@@ -462,10 +462,10 @@ export default function App() {
           <h2>The numbers</h2>
           <div className="num-grid">
             <div><div className="n">8,289</div><p>npm downloads last week</p></div>
-            <div><div className="n">3,365<span>/3,365</span></div><p>official suite cases passing, three dialects</p></div>
+            <div><div className="n">5,467<span>/5,467</span></div><p>official suite cases passing, five dialects</p></div>
             <div><div className="n">15</div><p>packages on npm, one engine underneath</p></div>
           </div>
-          <p className="num-note">downloads for 2026-09-28 to 2026-10-04, ata-validator 1.48.0 &middot; suite figures re-run in CI on each change, with code generation enabled and blocked</p>
+          <p className="num-note">downloads for 2026-09-28 to 2026-10-04, ata-validator 1.49.0 &middot; suite figures re-run in CI on each change, with code generation enabled and blocked</p>
         </div>
       </section>
 
@@ -491,7 +491,7 @@ export default function App() {
           <ul className="mani-proof">
             <li>
               <a href="https://ata-validator.com/docs/compliance">
-                100% of the official JSON Schema test suite, three dialects, with eval blocked.
+                100% of the official JSON Schema test suite, five dialects, with eval blocked.
               </a>
             </li>
             <li>
