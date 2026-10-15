@@ -129,7 +129,7 @@ const PRODUCTS: Product[] = [
     name: 'ata-validator',
     headline: 'The JSON Schema engine',
     body:
-      'Draft 2020-12, draft 7 and the v1 dialect at 100% of the official suite, compiled and interpreted alike, with compiler-grade error reports and an optional native accelerator.',
+      'Draft 2020-12, 2019-09, draft 7, draft-06, draft-04 and the v1 dialect at 100% of the official suite, compiled and interpreted alike, with compiler-grade error reports and an optional native accelerator.',
     meta: '★ 364 · 7 native builds · 0 required deps',
     href: 'https://github.com/ata-core/ata-validator',
     holo: true,
@@ -138,7 +138,10 @@ const PRODUCTS: Product[] = [
       lines: [
         { t: '$ npm run test:suite', c: 'dim' },
         { t: 'PASS  draft2020-12  1301/1301', c: 'ok' },
+        { t: 'PASS  draft2019-09  1261/1261', c: 'ok' },
         { t: 'PASS  draft7          929/929', c: 'ok' },
+        { t: 'PASS  draft6          841/841', c: 'ok' },
+        { t: 'PASS  draft4          618/618', c: 'ok' },
         { t: 'PASS  v1            1135/1135', c: 'ok' },
         { t: '0 known failures, 0 regressions', c: 'dim' },
       ],
@@ -318,7 +321,7 @@ export default function App() {
           <span><b>6 ns</b> reject</span>
           <span><b>23 ns</b> accept</span>
           <span><b>1.3 KB</b> compiled</span>
-          <span><b>3</b> dialects at 100%</span>
+          <span><b>6</b> dialects at 100%</span>
         </div>
         <div className="wrap hero-stage">
           <p className="lede">
@@ -462,10 +465,10 @@ export default function App() {
           <h2>The numbers</h2>
           <div className="num-grid">
             <div><div className="n">8,289</div><p>npm downloads last week</p></div>
-            <div><div className="n">5,467<span>/5,467</span></div><p>official suite cases passing, five dialects</p></div>
+            <div><div className="n">6,085<span>/6,085</span></div><p>official suite cases passing, six dialects</p></div>
             <div><div className="n">15</div><p>packages on npm, one engine underneath</p></div>
           </div>
-          <p className="num-note">downloads for 2026-09-28 to 2026-10-04, ata-validator 1.53.0 &middot; suite figures re-run in CI on each change, with code generation enabled and blocked</p>
+          <p className="num-note">downloads for 2026-09-28 to 2026-10-04, ata-validator 1.54.0 &middot; suite figures re-run in CI on each change, with code generation enabled and blocked</p>
         </div>
       </section>
 
@@ -491,7 +494,7 @@ export default function App() {
           <ul className="mani-proof">
             <li>
               <a href="https://ata-validator.com/docs/compliance">
-                100% of the official JSON Schema test suite, five dialects, with eval blocked.
+                100% of the official JSON Schema test suite, six dialects, with eval blocked.
               </a>
             </li>
             <li>
