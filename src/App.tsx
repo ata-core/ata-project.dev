@@ -239,8 +239,10 @@ const PRODUCTS: Product[] = [
 
 // Projects whose code depends on ata, from GitHub's dependency graph, and the
 // framework that lists the plugin. Each line is what the project does with it,
-// checked against its own code, not an endorsement.
+// checked against its own code, not an endorsement. Trendyol's use is in internal
+// code, so its line rests on the maintainer, who works there.
 const USED_BY: { name: string; href: string; what: string; path: string; logo?: string; mono?: string }[] = [
+  { name: 'Trendyol', href: 'https://github.com/Trendyol', logo: '/refs/trendyol.jpg', path: 'Trendyol', what: 'Validates configuration with ata in Puzzle, its internal config tooling.' },
   { name: 'Socket', href: 'https://github.com/SocketDev', logo: '/refs/socket.png', path: 'SocketDev', what: 'Uses ata, compiled ahead of time, in the shared build tooling of its repositories.' },
   { name: 'Fastify', href: 'https://fastify.dev/ecosystem/', logo: '/refs/fastify.png', path: 'fastify.dev/ecosystem', what: 'Lists the fastify-ata plugin in its ecosystem.' },
   { name: 'react-jsonschema-form', href: 'https://github.com/rjsf-team/react-jsonschema-form', logo: '/refs/rjsf.png', path: 'rjsf-team/react-jsonschema-form', what: 'Ships an ata validator in its main repository, runtime and precompiled.' },
@@ -349,8 +351,7 @@ export default function App() {
           <p className="ub-eyebrow">IN THE WILD</p>
           <h2>Who uses <span className="ub-word">ata</span></h2>
           <p className="ub-lede">
-            Projects whose code depends on ata, from GitHub&rsquo;s dependency graph, and what each
-            does with it.
+            Projects that depend on ata, and what each does with it.
           </p>
           <ul className="ub-grid">
             {USED_BY.map((u) => (
