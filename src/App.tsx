@@ -417,7 +417,7 @@ export default function App() {
           </p>
           <video className="race-video" src="/media/validator-race.mp4" poster="/media/validator-race.jpg" autoPlay muted loop playsInline />
           <p className="perf-note">
-            ata 3.30M &middot; typebox 1.64M &middot; ajv 1.29M &middot; typia 0.94M &middot; zod 0.44M a second.
+            ata 3.27M &middot; typia 1.96M &middot; typebox 1.62M &middot; ajv 1.25M &middot; zod 0.44M a second.
             The bodies, the scenes where ata is behind, and how to run it yourself:{' '}
             <a href="https://github.com/ata-core/validator-benchmarks">github.com/ata-core/validator-benchmarks</a>
           </p>
