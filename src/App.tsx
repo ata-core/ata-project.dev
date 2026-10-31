@@ -153,7 +153,7 @@ const PRODUCTS: Product[] = [
     name: '@ata-project/zod',
     headline: 'zod schemas on the engine',
     body:
-      'Same answers as zod, differential-tested on 15,068 values. Verdicts in 23 ns, rejections in 6, and isValidBytes answers straight from raw bytes with no JSON.parse, a path zod does not have.',
+      'Same answers as zod, differential-tested on 15,068 values. Verdicts in 20.6 ns, rejections in 5.8, and isValidBytes answers straight from raw bytes with no JSON.parse, a path zod does not have.',
     meta: 'v0.3.0 · 15,068-value differential suite · raw-byte verdicts',
     href: 'https://github.com/ata-core/ata-zod',
     dial: true,
@@ -162,8 +162,8 @@ const PRODUCTS: Product[] = [
       lines: [
         { t: "import { compile } from '@ata-project/zod'", c: 'dim' },
         { t: 'const check = compile(userSchema)' },
-        { t: 'check.isValid(data)   // 23 ns' },
-        { t: 'check.safeParse(bad)  // 8.5 ns, lazy ZodError' },
+        { t: 'check.isValid(data)   // 20.6 ns' },
+        { t: 'check.safeParse(bad)  // 7.6 ns, lazy ZodError' },
       ],
     },
   },
@@ -320,8 +320,8 @@ export default function App() {
           <p className="hero-sub">THE VALIDATION LAYER FOR JAVASCRIPT</p>
         </div>
         <div className="wrap hero-strip">
-          <span><b>6 ns</b> reject</span>
-          <span><b>23 ns</b> accept</span>
+          <span><b>5.8 ns</b> reject</span>
+          <span><b>20.6 ns</b> accept</span>
           <span><b>1.3 KB</b> compiled</span>
           <span><b>6</b> dialects at 100%</span>
         </div>
@@ -375,24 +375,24 @@ export default function App() {
           <p className="perf-eyebrow">PERFORMANCE</p>
           <div className="perf-rows">
             <div className="perf-row">
-              <div className="perf-num">6<span>ns</span></div>
+              <div className="perf-num">5.8<span>ns</span></div>
               <div className="perf-label">
                 <p>0 &rarr; VERDICT</p>
                 <p>an invalid document, rejected, through a zod schema</p>
               </div>
             </div>
             <div className="perf-row">
-              <div className="perf-num">23<span>ns</span></div>
+              <div className="perf-num">20.6<span>ns</span></div>
               <div className="perf-label">
                 <p>ACCEPT</p>
                 <p>a valid document through the same schema</p>
               </div>
             </div>
             <div className="perf-row">
-              <div className="perf-num">52<span>&micro;s</span></div>
+              <div className="perf-num">161.2<span>&micro;s</span></div>
               <div className="perf-label">
                 <p>COLD START</p>
-                <p>compile(schema), a zod definition to a ready validator</p>
+                <p>compile(schema), the same zod definition to a ready validator</p>
               </div>
             </div>
             <div className="perf-row">
@@ -403,7 +403,7 @@ export default function App() {
               </div>
             </div>
           </div>
-          <p className="perf-note">medians on Node 25, Apple silicon, zod 4.6.5, @ata-project/zod 0.3.0, ata-validator 1.33.1</p>
+          <p className="perf-note">medians on Node 25, Apple silicon, zod 4.6.5, @ata-project/zod 0.3.1, ata-validator 1.62.0</p>
         </div>
       </section>
 
