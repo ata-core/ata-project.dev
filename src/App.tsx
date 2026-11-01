@@ -137,7 +137,7 @@ const PRODUCTS: Product[] = [
       title: 'npm test',
       lines: [
         { t: '$ npm run test:suite', c: 'dim' },
-        { t: 'PASS  draft2020-12  1301/1301', c: 'ok' },
+        { t: 'PASS  draft2020-12  1302/1302', c: 'ok' },
         { t: 'PASS  draft2019-09  1261/1261', c: 'ok' },
         { t: 'PASS  draft7          929/929', c: 'ok' },
         { t: 'PASS  draft6          841/841', c: 'ok' },
